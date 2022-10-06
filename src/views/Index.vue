@@ -27,12 +27,12 @@
         >
           download
         </button>
-        <!-- <button
+        <button
           @click="cancelCtr"
           class="ml-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 border-none cursor-pointer"
         >
           cancel
-        </button> -->
+        </button>
       </div>
       <p>共 {{ bytesToSize(AxDownLoaderOption.fileSize) }}</p>
       <p>下载进度 {{ bytesToSize(AxDownLoaderOption.downloadSize) }}</p>
@@ -71,11 +71,12 @@ import AxDownLoader from 'axios-downloader'
 
 // 下载进度
 const AxDownLoaderOption = ref({
-  url: 'https://images.unsplash.com/photo-1663529628961-80aa6ebcd157?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80',
+  url: 'https://suqiqi.oss-cn-beijing.aliyuncs.com/test/video/1.mp4',
   fileName: 'test',
   fileSize: 0,
   downloadSize: 0,
   downloadProgress: 0,
+  cancel: null,
 })
 
 //下载
@@ -101,7 +102,7 @@ const bytesToSize = function (bytes) {
 
 // 取消下载
 const cancelCtr = function () {
-  cancel()
+  AxDownLoaderOption.value.cancel()
 }
 </script>
 
